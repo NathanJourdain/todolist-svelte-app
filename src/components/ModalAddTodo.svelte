@@ -1,6 +1,7 @@
 <script>
     import { modalOpenState, todos } from '../store.js';
     import Button from './Button.svelte';
+    import { v4 as uuidv4 } from 'uuid';
 
     // Etat d'ouverture / fermeture de la modal
     let open;
@@ -15,7 +16,7 @@
     // Enregistrement des données
     const handleSubmit = () => {
         todos.update(list => {
-            list.push({content: content, completed: false});
+            list.push({content: content, completed: false, id: uuidv4()});
             content = "";
             return list;
         });

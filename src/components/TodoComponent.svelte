@@ -1,8 +1,15 @@
 <script>
     export let todo;
+    import {todos} from '../store';
 
     const handleClick = () => {
-        todo.completed = !todo.completed;
+        // todo.completed = !todo.completed;
+        todos.set($todos.map(el => {
+            if(el.id == todo.id){
+                el.completed = !todo.completed;
+            }
+            return el;
+        }))
     }
 </script>
 
